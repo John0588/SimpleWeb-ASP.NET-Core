@@ -27,7 +27,7 @@ namespace SimpleWeb_ASP.NET_Core.Models
                     int day, 
                     Activity.ActivityType activityType,
                     double duration, 
-                    ThreadPriorityLevel priority = PriorityLevel.Medium,
+                    PriorityLevel priority = PriorityLevel.Medium,
                     bool exclude = false, 
                     string notes = null)
         {
