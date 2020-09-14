@@ -6,6 +6,7 @@ using SimpleWeb_ASP.NET_Core.Models;
 namespace SimpleWeb_ASP.NET_Core.Data
 {
     // Not "best practrice" for development only
+    // SEED Data
     public static class Data
     {
         // Activities Collection
