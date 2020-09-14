@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SimpleWeb_ASP.NET_Core.Models;
+using SimpleWeb_ASP.NET_Core.Data;
 
 namespace SimpleWeb_ASP.NET_Core.Data
 {
@@ -10,12 +12,12 @@ namespace SimpleWeb_ASP.NET_Core.Data
     // This takes place of our database
     public class SimpleWebRepository
     {
-        public List<Task> GetTask() // Get a list of tasks
+        public List<Tasks> GetTask() // Get a list of tasks
         {
             
             return Data.Tasks
                 .Join(
-                    Data.Activitie, // The Inner Collection
+                    Data.Activities, // The Inner Collection
                     e => e.ActrivityId, // The Outer Collection
                     a => a.id, // The inner sellector
                     (e, a) => // The result sellector
@@ -36,9 +38,9 @@ namespace SimpleWeb_ASP.NET_Core.Data
                     .SingleOrDefault();
 
             // Not Null
-            if (task.Avctivity == null)
+            if (task.Activity == null)
             {
-                task.Avctivity = Data.Activities
+                task.Activity = Data.Activities
                     .Where(a => a.Id == task.ActivityId)
                     .SingleOrDefault();
             }
