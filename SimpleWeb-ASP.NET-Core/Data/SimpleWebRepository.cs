@@ -11,17 +11,17 @@ namespace SimpleWeb_ASP.NET_Core.Data
     // This takes place of our database
     public class SimpleWebRepository
     {
-        public List<Task> GetTasks() // Get a list of tasks
+        public List<Webs> GetSimpleWeb() // Get a list of webs
         {
             
-            return Data.Tasks
+            return Data.SimpleWeb
                 .Join(
                     Data.Activities, // The Inner Collection
                     e => e.ActivityId, // The Outer Collection
                     a => a.Id, // The inner sellector
                     (e, a) => // The result sellector
                     {
-                        e.Activity = a; // Set the task's Activity ... /a - async
+                        e.Activity = a; // Set the simple web Activity ... /a - async
                         return e; // e - else
                     }
                     )
@@ -30,26 +30,26 @@ namespace SimpleWeb_ASP.NET_Core.Data
                 .ToList();
         }
 
-        public Task GetTask(int id) // Get a single task
+        public Webs GetTask(int id) // Get a single webs
         {
-            Task task = Data.Tasks
+            Webs webs = Data.SimpleWeb
                 .Where(e => e.Id == id)
                     .SingleOrDefault();
 
             // Not Null
-            if (task.Activity == null)
+            if (webs.Activity == null)
             {
-                task.Activity = Data.Activities
-                    .Where(a => a.Id == task.ActivityId)
+                webs.Activity = Data.Activities
+                    .Where(a => a.Id == webs.ActivityId)
                     .SingleOrDefault();
             }
 
-            return task;
+            return webs;
         }
 
-        // ADD task
-        // UPDATE task
-        // DELETE task
+        // ADD webs
+        // UPDATE webs
+        // DELETE webs
 
     }
 }

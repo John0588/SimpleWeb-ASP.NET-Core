@@ -9,6 +9,7 @@ namespace SimpleWeb_ASP.NET_Core.Data
     // Development only
     public class ActivitiesRepository
     {
+        // RETURNS list of activities
         public List<Activity> GetActivity()
         {
             return Data.Activities

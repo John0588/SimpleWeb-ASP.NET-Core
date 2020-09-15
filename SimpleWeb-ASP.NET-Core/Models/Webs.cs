@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Microsoft.Extensions.ObjectPool;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace SimpleWeb_ASP.NET_Core.Models
 {
-    public class Task
+    public class Webs
     {
-        // Add a priority level to each task
+        // Add a priority level to each Webs
         public enum PriorityLevel
         {
             Low,
@@ -17,11 +18,11 @@ namespace SimpleWeb_ASP.NET_Core.Models
             High
         }
 
-        public Task() // Method Task
+        public Webs() // Method Webs
         {
         }
 
-        public Task(int id, 
+        public Webs(int id, 
                     int year, 
                     int month, 
                     int day, 
@@ -40,18 +41,18 @@ namespace SimpleWeb_ASP.NET_Core.Models
             Notes = notes;
         }
 
-        // ID of Task
+        // ID of Webs
         public int Id { get; set; }
-        // DATE of task
+        // DATE of Webs
         public DateTime Date { get; set; }
         // ACTIVITY ID
         [Display(Name = "Activity")]
         public int ActivityId { get; set; }
-        // ACTIVITY for task
+        // ACTIVITY for Webs
         public Activity Activity { get; set; }
         // DURATION
         public double Duration { get; set; }
-        // PRIORITY LEVEL of the task
+        // PRIORITY LEVEL of the Webs
         public PriorityLevel Priority { get; set; }
         // EXCLUDED from the total calculation (?)
         public bool Exclude { get; set; }

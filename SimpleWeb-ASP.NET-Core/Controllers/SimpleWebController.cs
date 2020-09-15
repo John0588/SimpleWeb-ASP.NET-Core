@@ -2,9 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using SimpleWeb_ASP.NET_Core.Data;
 using SimpleWeb_ASP.NET_Core.Models;
-using System.Net;
+
 
 namespace SimpleWeb_ASP.NET_Core.Controllers
 {
@@ -19,22 +20,22 @@ namespace SimpleWeb_ASP.NET_Core.Controllers
 
         public ActionResult Index()
         {
-            List<Task> tasks = _simpleWebRepository.GetTasks();
+            List<Webs> simpleWeb = _simpleWebRepository.GetSimpleWeb();
 
             // Calculate the total activity minutes
-            double totalActivity = tasks
+            double totalActivity = simpleWeb
                 .Where(e => e.Exclude == false) // Only include the NON Excluded entries
                 .Sum(e => e.Duration);
 
-            int numberOfTasks = tasks
+            int numberOfSimpleWeb = simpleWeb
                 .Select(e => e.Date)
                 .Distinct()
                 .Count();
 
             ViewBag.TotalActivity = totalActivity;
-            ViewBag.AverageDailyActivity = (totalActivity / (double)numberOfTasks);
+            ViewBag.AverageDailyActivites = (totalActivity / (double)numberOfSimpleWeb);
 
-            return View(tasks);
+            return View(simpleWeb);
         }
 
         public ActionResult Add()

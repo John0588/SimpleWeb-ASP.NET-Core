@@ -1,0 +1,48 @@
+﻿
+@model List<SimpleWeb_ASP.NET_Core.Models.Webs>
+@{
+    ViewBag.Title = "Simple Web";
+}
+ 
+<div class="stats">
+    <h2 class="stats-header h3">Minutes of Activity</h2>
+    <div class="stats-left">
+        <span class="stats-number">@ViewBag.AverageDailyActivites.ToString("n1")</span> daily average
+    </div>
+    <div class="stats-right">
+        <span class="stats-number">@ViewBag.TotalActivity.ToString("n1")</span> total
+    </div>
+
+    <h3>@ViewBag.Title</h3>
+
+    <table class="table">
+        <tr>
+            <th>Date</th>
+            <th>Activity</th>
+            <th>Duration</th>
+            <th class="hidden-xs">Intensity</th>
+            <th>&nbsp;</th>
+        </tr>
+        @foreach (var webs in Model)
+        {
+            <tr>
+                <td>
+                    <span class="hidden-xs">@webs.Date.ToString("MM/dd/yyyy")</span>
+                    <span class="hidden-sm hidden-md hidden-lg">@webs.Date.ToString("MM/dd")</span>
+                </td>
+                <td>@webs.Activity.Name</td>
+                <td>@webs.Duration.ToString("0.0#")</td>
+                <td class="hiden-xs">@webs.Priority</td>
+                <td>
+                    <div class="pull-right">
+                        <a href="@Url.Action("Edit", new { id = webs.Id})" class="btn btn-warning btn-sm margin-right">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = webs.Id})" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+</div>
